@@ -1,0 +1,79 @@
+/* Three-colour palette: navy ink, blue brand, warm accent */
+:root {
+  --ink: #16293f;
+  --brand: #0b5cc2;
+  --accent: #f2a541;
+  --bg: #f6f8fb;
+  --muted: #4a5a6e;
+  --line: #d5e1ee;
+  --radius: 0.9rem;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; font-family: system-ui, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--bg); line-height: 1.6; }
+.wrap { max-width: 60rem; margin: 0 auto; padding-left: 1.25rem; padding-right: 1.25rem; }
+h1, h2, h3 { line-height: 1.2; }
+h2 { font-size: 1.9rem; margin: 0 0 1.5rem; }
+h2::after { content: ""; display: block; width: 3rem; height: 0.25rem; margin-top: 0.5rem; background: var(--accent); border-radius: 1rem; }
+a { color: var(--brand); }
+a:focus-visible, .btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 0.3rem; }
+section { padding-top: 4rem; padding-bottom: 4rem; scroll-margin-top: 4rem; }
+
+.skip { position: absolute; left: -999px; top: 0.5rem; background: #fff; padding: 0.5rem 1rem; z-index: 10; }
+.skip:focus { left: 0.5rem; }
+
+/* Header and navigation: Flexbox */
+.site-header { position: sticky; top: 0; z-index: 5; background: var(--ink); }
+.nav { display: flex; justify-content: space-between; align-items: center; min-height: 4rem; }
+.logo { color: #fff; font-weight: 800; font-size: 1.4rem; text-decoration: none; }
+.logo span { color: var(--accent); }
+.nav-links { display: flex; gap: 0.5rem; list-style: none; margin: 0; padding: 0; }
+.nav-links a { display: block; padding: 0.5rem 0.8rem; color: #fff; text-decoration: none; border-radius: 0.5rem; }
+.nav-links a:hover { background: rgba(255, 255, 255, 0.12); }
+
+/* Hero: Flexbox */
+.hero { display: flex; align-items: center; gap: 3rem; padding-top: 5rem; }
+.hero-text { flex: 1; }
+.eyebrow { margin: 0; color: var(--brand); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.9rem; }
+.hero h1 { font-size: clamp(2.2rem, 6vw, 3.4rem); margin: 0.4rem 0 1rem; }
+.lead { font-size: 1.15rem; color: var(--muted); max-width: 36rem; }
+.avatar { width: 16rem; height: auto; flex: none; border-radius: 50%; box-shadow: 0 1rem 2.5rem rgba(22, 41, 63, 0.18); }
+
+.actions, .contact-links { display: flex; flex-wrap: wrap; gap: 0.75rem; list-style: none; padding: 0; margin: 1.5rem 0 0; }
+.btn { display: inline-block; padding: 0.75rem 1.4rem; border-radius: 0.6rem; font-weight: 600; text-decoration: none; transition: transform 0.2s, background 0.2s; }
+.btn-primary { background: var(--brand); color: #fff; }
+.btn-primary:hover { background: #094a9c; transform: translateY(-2px); }
+.btn-outline { border: 2px solid var(--brand); color: var(--brand); }
+.btn-outline:hover { background: var(--brand); color: #fff; transform: translateY(-2px); }
+
+/* Skills and project cards: Grid */
+.cards { display: grid; gap: 1.25rem; list-style: none; margin: 0; padding: 0; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); }
+.card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 1.4rem; transition: transform 0.2s, box-shadow 0.2s; }
+.card:hover { transform: translateY(-4px); box-shadow: 0 0.75rem 1.5rem rgba(22, 41, 63, 0.1); }
+.card h3 { margin: 0 0 0.4rem; font-size: 1.15rem; }
+.card p { margin: 0; color: var(--muted); }
+.project { display: flex; flex-direction: column; gap: 0.6rem; border-top: 0.3rem solid var(--brand); }
+.project .tags { font-size: 0.9rem; color: var(--brand); font-weight: 600; }
+.project .links { margin-top: auto; display: flex; gap: 1rem; }
+.project .links a { font-weight: 600; padding: 0.4rem 0; }
+
+.contact p { color: var(--muted); max-width: 36rem; }
+.site-footer { background: var(--ink); color: #c8d4e3; padding: 1.5rem 0; text-align: center; }
+.site-footer p { margin: 0; }
+
+@media (prefers-reduced-motion: reduce) { .btn, .card { transition: none; } .btn:hover, .card:hover { transform: none; } }
+
+/* Phones and small tablets */
+@media (max-width: 700px) {
+  .nav { flex-direction: column; padding-top: 0.5rem; padding-bottom: 0.5rem; }
+  .nav-links { width: 100%; justify-content: space-between; }
+  .nav-links a { padding: 0.75rem 0.6rem; }           /* larger tap targets */
+  .hero { flex-direction: column-reverse; text-align: center; gap: 1.5rem; padding-top: 2.5rem; }
+  .lead { margin-left: auto; margin-right: auto; }
+  .actions { justify-content: center; }
+  .avatar { width: 10rem; }
+  .btn { padding: 0.9rem 1.4rem; }
+  section { padding-top: 3rem; padding-bottom: 3rem; scroll-margin-top: 7rem; }
+}
